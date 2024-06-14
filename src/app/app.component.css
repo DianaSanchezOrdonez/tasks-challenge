@@ -1,0 +1,15 @@
+.drawer-container {
+  width: auto;
+  height: 100%;
+  margin: 32px;
+}
+
+mat-drawer {
+  width: 232px;
+  border-radius: 24px;
+  background-color: #2C2F33;
+}
+
+mat-drawer-content {
+  padding-left: 32px;
+}

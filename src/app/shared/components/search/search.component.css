@@ -1,0 +1,28 @@
+.search-form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: #2C2F33;
+  padding: 12px 24px;
+  height: 64px;
+  box-sizing: border-box;
+  border-radius: 16px;
+  color: #94979A;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.profile-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.profile-avatar {
+  width: 40px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 50%;
+}
