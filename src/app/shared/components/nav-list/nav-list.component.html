@@ -1,15 +1,15 @@
 <img class="logo-img" src="../../../assets/images/logo.png" alt="ravn-logo" />
 <mat-nav-list>
-  <mat-list-item [activated]="true" class="nav-link-item">
-    <mat-icon
-      aria-hidden="false"
-      aria-label="grid_view"
-      fontIcon="grid_view"
-    ></mat-icon>
-    <a routerLink="/">DASHBOARD</a>
+  <mat-list-item [activated]="isRouteActive('/')" routerLink="/">
+    <div [ngClass]="{'nav-link-item': true}">
+      <mat-icon aria-hidden="false" aria-label="grid_view" fontIcon="grid_view"></mat-icon>
+      <a>DASHBOARD</a>
+    </div>
   </mat-list-item>
-  <mat-list-item>
-    <mat-icon aria-hidden="false" aria-label="menu" fontIcon="menu"></mat-icon>
-    <a routerLink="/tasks">MY TASK</a>
+  <mat-list-item [activated]="isRouteActive('/tasks')" routerLink="/tasks">
+    <div [ngClass]="{'nav-link-item': true}">
+      <mat-icon aria-hidden="false" aria-label="menu" fontIcon="menu"></mat-icon>
+      <a>MY TASK</a>
+    </div>
   </mat-list-item>
 </mat-nav-list>
