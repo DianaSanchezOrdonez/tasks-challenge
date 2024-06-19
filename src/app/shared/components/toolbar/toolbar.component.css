@@ -1,0 +1,26 @@
+.mat-toolbar-single-row {
+  height: 48px;
+  margin-top: 32px;
+  background-color: #222528;
+}
+
+.mat-toolbar-single-row button {
+  height: 40px;
+  width: 40px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.mat-icon {
+  color: #ffffff;
+}
+
+button.view-active {
+  border: 1px solid #DA584B !important;
+  border-radius: 8px;
+}
+
+.view-active .mat-icon {
+  color: #DA584B;
+}
