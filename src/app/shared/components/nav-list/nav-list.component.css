@@ -6,3 +6,13 @@
 .mdc-list-item.mdc-list-item--with-one-line {
   height: 56px;
 }
+
+.nav-link-item {
+  display: flex;
+  gap: 16px;
+}
+
+a {
+  text-decoration: none;
+  color: #94979A;
+}
