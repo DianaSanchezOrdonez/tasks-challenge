@@ -1,0 +1,45 @@
+mat-card {
+  background-color: #2C2F33;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.card-header {
+  padding: 6px 0;
+
+  span {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 32px;
+    letter-spacing: 0.75px;
+    text-align: left;
+  }
+}
+
+.card-header,
+.task-info,
+.mat-mdc-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tags-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.task-comments {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  span {
+    font-size: 15px;
+  }
+}
+
+.mat-icon {
+  height: 16px;
+}

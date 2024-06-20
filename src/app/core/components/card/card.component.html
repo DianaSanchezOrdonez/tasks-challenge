@@ -1,0 +1,30 @@
+<mat-card>
+  <mat-card-content>
+    <div class="card-header">
+      <span>{{ task.name }}</span>
+      <button mat-fab extended>
+        <mat-icon>more_horiz</mat-icon>
+      </button>
+    </div>
+    <p class="task-info">
+      <span>4 Points</span>
+      <app-chips></app-chips>
+    </p>
+    <p class="tags-info">
+      <app-chips></app-chips>
+      <app-chips></app-chips>
+    </p>
+  </mat-card-content>
+  <mat-card-footer>
+    <app-avatar />
+    <div class="task-comments">
+      <mat-icon svgIcon="attachement" />
+      <div>
+        <span>5</span><mat-icon svgIcon="thread" />
+      </div>
+      <div>
+        <span>5</span><mat-icon svgIcon="comment" />
+      </div>
+    </div>
+  </mat-card-footer>
+</mat-card>
