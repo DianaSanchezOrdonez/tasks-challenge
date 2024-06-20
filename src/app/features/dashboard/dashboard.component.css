@@ -5,9 +5,10 @@
 }
 
 .column {
-  background-color: #f0f0f0;
+  /* background-color: #f0f0f0; */
   display: grid;
   gap: 16px;
+  align-self: flex-start;
 }
 
 .column-header {

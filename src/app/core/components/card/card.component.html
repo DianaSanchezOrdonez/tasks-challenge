@@ -3,28 +3,38 @@
     <div class="card-header">
       <span>{{ task.name }}</span>
       <button mat-fab extended>
-        <mat-icon>more_horiz</mat-icon>
+        <app-custom-icons icon="more_horiz"></app-custom-icons>
       </button>
     </div>
     <p class="task-info">
-      <span>4 Points</span>
-      <app-chips></app-chips>
+      <span>{{ task.pointEstimate }} Points</span>
+      <app-chips
+        [item]="{
+          type: 'date',
+          hasIcon: true,
+          iconName: 'alarm',
+          content: task.dueDate,
+          className: 'timer-tag'
+        }"
+      ></app-chips>
     </p>
-    <p class="tags-info">
-      <app-chips></app-chips>
-      <app-chips></app-chips>
-    </p>
+    <div class="tags-info">
+      @for (tag of task.tags; track $index) {
+        <app-chips
+        [item]="{
+          type: 'text',
+          content: tag,
+          className: (tag | lowercase) + '-tag'
+        }"/>
+      }
+    </div>
   </mat-card-content>
   <mat-card-footer>
-    <app-avatar />
+    <app-avatar avatarUrl="https://avatars.dicebear.com/api/initials/gs.svg" />
     <div class="task-comments">
-      <mat-icon svgIcon="attachement" />
-      <div>
-        <span>5</span><mat-icon svgIcon="thread" />
-      </div>
-      <div>
-        <span>5</span><mat-icon svgIcon="comment" />
-      </div>
+      <app-custom-icons svgIcon="attachement" />
+      <div><span>5</span><app-custom-icons svgIcon="thread" /></div>
+      <div><span>3</span><app-custom-icons svgIcon="comment" /></div>
     </div>
   </mat-card-footer>
 </mat-card>

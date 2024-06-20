@@ -1,7 +1,29 @@
 .mdc-evolution-chip-set .mdc-evolution-chip {
-  margin: 0;
   border-radius: 4px;
   padding: 4px;
   height: 32px;
   box-sizing: border-box;
+  margin: 0 8px 0 0;
+}
+
+.mdc-evolution-chip-set .mdc-evolution-chip.timer-tag { 
+  margin: 0;
+  background-color: rgba(148, 151, 154, 0.1);
+}
+
+.mdc-evolution-chip-set .mdc-evolution-chip.ios-tag,
+.mdc-evolution-chip-set .mdc-evolution-chip.node_js-tag  { 
+  background-color: rgba(112, 178, 82, 0.1);
+}
+
+.mdc-evolution-chip-set .mdc-evolution-chip.android-tag { 
+  background-color: rgba(229, 180, 84, 0.1);
+}
+
+.mdc-evolution-chip-set .mdc-evolution-chip.rails-tag { 
+  background-color: rgba(229, 123, 82, 0.1);
+}
+
+.mdc-evolution-chip-set .mdc-evolution-chip.react-tag {
+  background-color: rgba(44, 107, 232, 0.1);
 }

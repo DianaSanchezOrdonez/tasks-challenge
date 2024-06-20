@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-avatar',
@@ -9,5 +8,5 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './avatar.component.css'
 })
 export class AvatarComponent {
-
+  @Input() avatarUrl: string = 'https://xsgames.co/randomusers/avatar.php?g=pixel'
 }
