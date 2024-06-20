@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { NavListComponent } from './shared/components/nav-list/nav-list.component';
-import { CardComponent } from './shared/components/card/card.component';
+import { NavListComponent } from './core/components/nav-list/nav-list.component';
+import { CardComponent } from './core/components/card/card.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { SearchComponent } from './shared/components/search/search.component';
-import { ToolbarComponent } from './shared/components/toolbar/toolbar.component';
+import { SearchComponent } from './core/components/search/search.component';
+import { ToolbarComponent } from './core/components/toolbar/toolbar.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DataService } from './core/services/data.service';
 
 @Component({
   selector: 'app-root',
@@ -18,10 +20,12 @@ import { ToolbarComponent } from './shared/components/toolbar/toolbar.component'
     SearchComponent,
     NavListComponent,
     CardComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    HttpClientModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
+  providers: [DataService]
 })
 export class AppComponent {
   title = 'tasks-challenge';

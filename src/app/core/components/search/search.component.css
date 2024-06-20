@@ -19,10 +19,3 @@ mat-form-field {
   align-items: center;
   gap: 8px;
 }
-
-.profile-avatar {
-  width: 40px;
-  height: auto;
-  object-fit: contain;
-  border-radius: 50%;
-}

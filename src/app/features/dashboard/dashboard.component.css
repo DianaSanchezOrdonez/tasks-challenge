@@ -1,0 +1,19 @@
+.dashboard-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.column {
+  background-color: #f0f0f0;
+  display: grid;
+  gap: 16px;
+}
+
+.column-header {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 32px;
+  letter-spacing: 0.75px;
+  color: #ffffff;
+}

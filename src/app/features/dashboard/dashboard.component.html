@@ -1,11 +1,12 @@
-<mat-grid-list cols="3" rowHeight="3:1">
-  <mat-grid-tile>
-    <span>Working (03)</span>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <span>In Progress (03)</span>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <span>Completed (03)</span>
-  </mat-grid-tile>
-</mat-grid-list>
+<div class="dashboard-container">
+  <div class="column">
+    <h2 class="column-header">Column 1</h2>
+    <app-card *ngFor="let task of tasks" [task]="task"></app-card>
+  </div>
+  <div class="column">
+    <h2 class="column-header">Column 2</h2>
+  </div>
+  <div class="column">
+    <h2 class="column-header">Column 3</h2>
+  </div>
+</div>
