@@ -2,13 +2,13 @@
 <mat-nav-list>
   <mat-list-item [activated]="isRouteActive('/')" routerLink="/">
     <div [ngClass]="{'nav-link-item': true}">
-      <mat-icon aria-hidden="false" aria-label="grid_view" fontIcon="grid_view"></mat-icon>
+      <app-custom-icons icon="grid_view"/>
       <a>DASHBOARD</a>
     </div>
   </mat-list-item>
   <mat-list-item [activated]="isRouteActive('/tasks')" routerLink="/tasks">
     <div [ngClass]="{'nav-link-item': true}">
-      <mat-icon aria-hidden="false" aria-label="menu" fontIcon="menu"></mat-icon>
+      <app-custom-icons icon="menu"/>
       <a>MY TASK</a>
     </div>
   </mat-list-item>

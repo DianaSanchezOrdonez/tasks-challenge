@@ -1,3 +1,12 @@
-<mat-chip-set aria-label="Due Date">
-  <mat-chip><mat-icon>alarm</mat-icon>Today</mat-chip>
+<mat-chip-set>
+  <mat-chip [ngClass]="item.className">
+    @if(item.hasIcon) {
+      <app-custom-icons icon="{{ item.iconName }}"/>
+    } 
+    @if (item.type === 'date') {
+      {{ item.content | date : "d MMMM, yyyy" | uppercase }}
+    } @else {
+      {{ item.content | uppercase }}
+    }
+  </mat-chip>
 </mat-chip-set>
