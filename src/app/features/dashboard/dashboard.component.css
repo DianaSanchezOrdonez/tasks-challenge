@@ -6,15 +6,40 @@
 
 .column {
   /* background-color: #f0f0f0; */
-  display: grid;
-  gap: 16px;
-  align-self: flex-start;
+  .column-header {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 32px;
+    letter-spacing: 0.75px;
+    color: #ffffff;
+  }
+
+  .column-content {
+    display: grid;
+    gap: 16px;
+    align-self: flex-start;
+  }
 }
 
-.column-header {
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 32px;
-  letter-spacing: 0.75px;
-  color: #ffffff;
+/* card-css */
+mat-card {
+  background-color: #2c2f33;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.footer-skeleton {
+  padding: 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tags-skeleton {
+  display: flex;
+  gap: 8px;
+
+  ngx-skeleton-loader {
+    width: 20%;
+  }
 }

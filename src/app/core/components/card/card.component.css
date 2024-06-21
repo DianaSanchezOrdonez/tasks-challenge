@@ -5,8 +5,6 @@ mat-card {
 }
 
 .card-header {
-  padding: 6px 0;
-
   span {
     font-size: 18px;
     font-weight: 600;
@@ -18,7 +16,7 @@ mat-card {
   button {
     border: none;
     background-color: transparent;
-    color: rgba(148, 151, 154, 1);
+    color: #94979A;
   }
 }
 
@@ -34,6 +32,10 @@ mat-card {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.mat-mdc-card-content:first-child {
+  padding: 0;
 }
 
 .mat-mdc-card-content > :last-child:not(.mat-mdc-card-footer) {

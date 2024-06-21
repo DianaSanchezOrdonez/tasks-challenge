@@ -1,8 +1,14 @@
 <mat-toolbar>
-  <button mat-fab aria-label="menu" class="view-active">
-    <app-custom-icons icon="menu"/>
-  </button>
-  <button mat-fab aria-label="grid_view">
-    <app-custom-icons icon="grid_view"/>
+  <div>
+    <button mat-fab aria-label="menu" >
+      <app-custom-icons icon="menu"/>
+    </button>
+    <button mat-fab aria-label="grid_view" class="view-active">
+      <app-custom-icons icon="grid_view"/>
+    </button>
+  </div>
+
+  <button mat-fab aria-label="add" class="add-btn">
+    <app-custom-icons icon="add"/>
   </button>
 </mat-toolbar>

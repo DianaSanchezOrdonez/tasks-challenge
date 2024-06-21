@@ -5,6 +5,8 @@ import { ChipsComponent } from '../chips/chips.component';
 import { AvatarComponent } from '../avatar/avatar.component';
 import { LowerCasePipe } from '@angular/common';
 import { CustomIconsComponent } from '../custom-icons/custom-icons.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'app-card',
@@ -14,7 +16,9 @@ import { CustomIconsComponent } from '../custom-icons/custom-icons.component';
     ChipsComponent,
     AvatarComponent,
     LowerCasePipe,
-    CustomIconsComponent
+    CustomIconsComponent,
+    MatButtonModule,
+    MatMenuModule,
   ],
   templateUrl: './card.component.html',
   styleUrl: './card.component.css',

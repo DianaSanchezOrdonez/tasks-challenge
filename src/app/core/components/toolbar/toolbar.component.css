@@ -2,6 +2,7 @@
   height: 48px;
   margin-top: 32px;
   background-color: #222528;
+  justify-content: space-between;
   
   button {
   height: 40px;
@@ -9,18 +10,17 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
-  }
-}
-
-.mat-icon {
   color: #ffffff;
+  }
+
+  .add-btn {
+    background-color: #DA584B;
+    border-radius: 8px;
+  }
 }
 
 button.view-active {
   border: 1px solid #DA584B !important;
   border-radius: 8px;
-}
-
-.view-active .mat-icon {
-  color: #DA584B;
+  color: #DA584B !important;
 }

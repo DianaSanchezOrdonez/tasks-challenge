@@ -3,7 +3,7 @@
   padding: 4px;
   height: 32px;
   box-sizing: border-box;
-  margin: 0 8px 0 0;
+  margin-right: 8px;
 }
 
 .mdc-evolution-chip-set .mdc-evolution-chip.timer-tag { 

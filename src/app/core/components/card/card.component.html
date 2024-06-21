@@ -2,9 +2,17 @@
   <mat-card-content>
     <div class="card-header">
       <span>{{ task.name }}</span>
-      <button mat-fab extended>
-        <app-custom-icons icon="more_horiz"></app-custom-icons>
+      <button mat-button [matMenuTriggerFor]="menu">
+        <app-custom-icons icon="more_horiz" />
       </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <app-custom-icons icon="mode_edit_outline" />Edit
+        </button>
+        <button mat-menu-item>
+          <app-custom-icons icon="delete_outline" />Delete
+        </button>
+      </mat-menu>
     </div>
     <p class="task-info">
       <span>{{ task.pointEstimate }} Points</span>

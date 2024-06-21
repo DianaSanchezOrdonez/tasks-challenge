@@ -1,20 +1,54 @@
 <div class="dashboard-container">
   <div class="column">
     <h2 class="column-header">Working ({{ workingTasks.length }})</h2>
-    @for (task of workingTasks; track $index) {
-      <app-card [task]="task" />
-    }
+    <div class="column-content" *ngIf="workingTasks.length > 0; else skeleton">
+      @for (task of workingTasks; track $index) {
+        <app-card [task]="task" />
+        }
+    </div>
   </div>
   <div class="column">
     <h2 class="column-header">In Progress ({{ inProgressTasks.length }})</h2>
-    @for (task of inProgressTasks; track $index) {
-      <app-card [task]="task" />
-    }
+    <div class="column-content" *ngIf="workingTasks.length > 0; else skeleton">
+      @for (task of inProgressTasks; track $index) {
+        <app-card [task]="task" />
+        }
+    </div>
   </div>
   <div class="column">
     <h2 class="column-header">Completed ({{ completedTasks.length }})</h2>
-    @for (task of completedTasks; track $index) {
-      <app-card [task]="task" />
-    }
+    <div class="column-content" *ngIf="workingTasks.length > 0; else skeleton">
+      @for (task of completedTasks; track $index) {
+        <app-card [task]="task" />
+        }
+    </div>
   </div>
 </div>
+
+
+<ng-template #skeleton>
+  @for (item of [1, 2, 3]; track $index) {
+    <mat-card>
+      <mat-card-content>
+        <div class="card-header">
+          <ngx-skeleton-loader count="1" appearance="line" [theme]="{backgroundColor: '#94979A1A'}"></ngx-skeleton-loader>
+        </div>
+        <p class="task-info">
+          <ngx-skeleton-loader count="1" appearance="line" [theme]="{backgroundColor: '#94979A1A'}"></ngx-skeleton-loader>
+        </p>
+        <div class="tags-skeleton">
+          <ngx-skeleton-loader count="1" appearance="line" [theme]="{backgroundColor: '#94979A1A'}"></ngx-skeleton-loader>
+          <ngx-skeleton-loader count="1" appearance="line" [theme]="{backgroundColor: '#94979A1A'}"></ngx-skeleton-loader>
+          <ngx-skeleton-loader count="1" appearance="line" [theme]="{backgroundColor: '#94979A1A'}"></ngx-skeleton-loader>
+        </div>
+      </mat-card-content>
+      <mat-card-footer class="footer-skeleton">
+        <ngx-skeleton-loader count="1" appearance="circle" [theme]="{backgroundColor: '#94979A1A'}"></ngx-skeleton-loader>
+        <div class="task-comments">
+          <ngx-skeleton-loader count="1" appearance="circle" [theme]="{height: '30px', width: '30px', backgroundColor: '#94979A1A'}"></ngx-skeleton-loader>
+          <ngx-skeleton-loader count="1" appearance="circle" [theme]="{height: '30px', width: '30px', backgroundColor: '#94979A1A'}"></ngx-skeleton-loader>
+          <ngx-skeleton-loader count="1" appearance="circle" [theme]="{height: '30px', width: '30px', backgroundColor: '#94979A1A'}"></ngx-skeleton-loader>      </div>
+      </mat-card-footer>
+    </mat-card>
+  }
+</ng-template>
