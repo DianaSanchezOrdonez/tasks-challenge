@@ -25,4 +25,20 @@ import { MatMenuModule } from '@angular/material/menu';
 })
 export class CardComponent {
   @Input() task!: Task;
+
+  validDueDateStyle(value: string): string {
+    const currentDate = new Date().getTime();
+    const dueDate = new Date(value).getTime();
+    const diffInMs = dueDate - currentDate;
+
+    const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+
+    if (diffInDays <= 2 && diffInDays >= 0) {
+      return 'warning-time';
+    } else if (diffInDays < 0) {
+      return 'danger-time';
+    } else {
+      return 'on-time';
+    }
+  }
 }

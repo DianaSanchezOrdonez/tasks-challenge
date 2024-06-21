@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-content>
     <div class="card-header">
-      <span>{{ task.name }}</span>
+      <span class="body-large-bold">{{ task.name }}</span>
       <button mat-button [matMenuTriggerFor]="menu">
         <app-custom-icons icon="more_horiz" />
       </button>
@@ -15,14 +15,14 @@
       </mat-menu>
     </div>
     <p class="task-info">
-      <span>{{ task.pointEstimate }} Points</span>
+      <span class="body-medium-bold">{{ task.pointEstimate }} Points</span>
       <app-chips
         [item]="{
           type: 'date',
           hasIcon: true,
           iconName: 'alarm',
           content: task.dueDate,
-          className: 'timer-tag'
+          className: validDueDateStyle(task.dueDate)
         }"
       ></app-chips>
     </p>
