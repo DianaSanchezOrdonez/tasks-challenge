@@ -5,11 +5,19 @@ import { CardComponent } from '../../core/components/card/card.component';
 import { HttpClient } from '@angular/common/http';
 import { StatusEnum } from './models/task.enums';
 import { Observable } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CardComponent],
+  imports: [
+    CommonModule,
+    CardComponent,
+    NgxSkeletonLoaderModule,
+    MatCardModule,
+  ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
 })
