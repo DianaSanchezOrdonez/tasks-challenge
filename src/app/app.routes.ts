@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { CardComponent } from './core/components/card/card.component';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
+import { NotFoundComponent } from './features/not-found/not-found.component';
 
 export const routes: Routes = [
   {
@@ -11,4 +12,5 @@ export const routes: Routes = [
     path: 'tasks',
     component: CardComponent,
   },
+  { path: '**', component: NotFoundComponent },
 ];
