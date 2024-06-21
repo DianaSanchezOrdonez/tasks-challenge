@@ -1,29 +1,37 @@
-.mdc-evolution-chip-set .mdc-evolution-chip {
+.chip-container {
   border-radius: 4px;
-  padding: 4px;
+  padding: 4px 16px;
   height: 32px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   box-sizing: border-box;
-  margin-right: 8px;
 }
 
-.mdc-evolution-chip-set .mdc-evolution-chip.timer-tag { 
-  margin: 0;
+.on-time { 
   background-color: rgba(148, 151, 154, 0.1);
+  color: #ffffff;
 }
 
-.mdc-evolution-chip-set .mdc-evolution-chip.ios-tag,
-.mdc-evolution-chip-set .mdc-evolution-chip.node_js-tag  { 
-  background-color: rgba(112, 178, 82, 0.1);
-}
-
-.mdc-evolution-chip-set .mdc-evolution-chip.android-tag { 
+.warning-time,
+.android-tag { 
   background-color: rgba(229, 180, 84, 0.1);
+  color: #E5B454;
 }
 
-.mdc-evolution-chip-set .mdc-evolution-chip.rails-tag { 
-  background-color: rgba(229, 123, 82, 0.1);
+.danger-time,
+.rails-tag { 
+  background-color: rgba(218, 88, 75, 0.1);
+  color: #DA584B;
 }
 
-.mdc-evolution-chip-set .mdc-evolution-chip.react-tag {
-  background-color: rgba(44, 107, 232, 0.1);
+.ios-tag,
+.node_js-tag  { 
+  background-color: rgba(112, 178, 82, 0.1);
+  color: #70B252
+}
+
+.react-tag {
+  background-color: rgba(48, 82, 148, 0.1);
+  color: #396aa5
 }
