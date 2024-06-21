@@ -6,6 +6,14 @@ body {
 }
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  /* font-family: "SFProDisplay", Roboto, "Helvetica Neue", sans-serif; */
+  font-family: "SFProDisplay";
   background-color: #222528;
+}
+
+@font-face {
+  font-family: 'SFProDisplay';
+  src: url('assets/fonts/sf-pro-display/SFPRODISPLAYREGULAR.OTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
