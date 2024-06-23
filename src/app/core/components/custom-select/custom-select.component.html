@@ -1,0 +1,12 @@
+<div class="custom-select-container">
+  <div class="custom-select" (click)="toggleDropdown()">
+    <app-custom-icons [svgIcon]="icon"></app-custom-icons>
+    <span class="body-medium-bold">{{ selectedOption?.label || label }}</span>
+  </div>
+  <div *ngIf="dropdownOpen" class="custom-options">
+    <div class="custom-option" *ngFor="let option of options" (click)="selectOption(option)">
+      <app-custom-icons [svgIcon]="option.icon"></app-custom-icons>
+      <span class="body-medium-bold">{{ option.label }}</span>
+    </div>
+  </div>
+</div>
