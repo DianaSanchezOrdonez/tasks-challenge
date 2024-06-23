@@ -7,6 +7,7 @@ import { LowerCasePipe } from '@angular/common';
 import { CustomIconsComponent } from '../custom-icons/custom-icons.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+import { ConvertStringToNumberPipe } from '../../pipes/convert-string-to-number';
 
 @Component({
   selector: 'app-card',
@@ -19,6 +20,7 @@ import { MatMenuModule } from '@angular/material/menu';
     CustomIconsComponent,
     MatButtonModule,
     MatMenuModule,
+    ConvertStringToNumberPipe
   ],
   templateUrl: './card.component.html',
   styleUrl: './card.component.css',

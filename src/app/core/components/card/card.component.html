@@ -15,7 +15,7 @@
       </mat-menu>
     </div>
     <p class="task-info">
-      <span class="body-medium-bold">{{ task.pointEstimate }} Points</span>
+      <span class="body-medium-bold">{{ task.pointEstimate | lowercase | stringtonumber }} Points</span>
       <app-chips
         [item]="{
           type: 'date',
@@ -38,7 +38,7 @@
     </div>
   </mat-card-content>
   <mat-card-footer>
-    <app-avatar avatarUrl="https://avatars.dicebear.com/api/initials/gs.svg" />
+    <app-avatar [avatarUrl]="task.assignee.avatar" />
     <div class="task-comments">
       <app-custom-icons svgIcon="attachement" />
       <div><span>5</span><app-custom-icons svgIcon="thread" /></div>
