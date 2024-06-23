@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
-import { DomSanitizer } from '@angular/platform-browser';
+import { RegistryIconsService } from '../../services/registry-icons.service';
 
 @Component({
   selector: 'app-custom-icons',
@@ -8,33 +8,42 @@ import { DomSanitizer } from '@angular/platform-browser';
   imports: [MatIconModule],
   templateUrl: './custom-icons.component.html',
   styleUrl: './custom-icons.component.css',
-  providers: [MatIconRegistry],
+  providers: [RegistryIconsService, MatIconRegistry],
 })
 export class CustomIconsComponent {
   @Input() icon: string = '';
   @Input() svgIcon?: string;
 
-  constructor(
-    private matIconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer
-  ) {
-    this.matIconRegistry.addSvgIcon(
+  constructor(private registryIconsService: RegistryIconsService) {}
+
+  ngOnInit() {
+    this.registryIconsService.registerIcon(
       'attachement',
-      this.domSanitizer.bypassSecurityTrustResourceUrl(
-        '/assets/images/attachement.svg'
-      )
+      '/assets/images/attachement.svg'
     );
-    this.matIconRegistry.addSvgIcon(
+    this.registryIconsService.registerIcon(
       'thread',
-      this.domSanitizer.bypassSecurityTrustResourceUrl(
-        '/assets/images/thread.svg'
-      )
+      '/assets/images/thread.svg'
     );
-    this.matIconRegistry.addSvgIcon(
+    this.registryIconsService.registerIcon(
       'comment',
-      this.domSanitizer.bypassSecurityTrustResourceUrl(
-        '/assets/images/comment.svg'
-      )
+      '/assets/images/comment.svg'
+    );
+    this.registryIconsService.registerIcon(
+      'estimate',
+      '/assets/images/estimate.svg'
+    );
+    this.registryIconsService.registerIcon(
+      'assignee',
+      '/assets/images/assignee.svg'
+    );
+    this.registryIconsService.registerIcon(
+      'label',
+      '/assets/images/label.svg'
+    );
+    this.registryIconsService.registerIcon(
+      'duedate',
+      '/assets/images/duedate.svg'
     );
   }
 }
