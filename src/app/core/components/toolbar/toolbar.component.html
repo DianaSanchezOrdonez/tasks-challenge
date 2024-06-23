@@ -1,14 +1,24 @@
 <mat-toolbar>
   <div>
-    <button mat-fab aria-label="menu" >
-      <app-custom-icons icon="menu"/>
+    <button
+      mat-fab
+      aria-label="list-view"
+      (click)="setActiveButton('list-view')"
+      [class.view-active]="activeButton === 'list-view'"
+    >
+      <app-custom-icons icon="menu" />
     </button>
-    <button mat-fab aria-label="grid_view" class="view-active">
-      <app-custom-icons icon="grid_view"/>
+    <button
+      mat-fab
+      aria-label="grid-view"
+      (click)="setActiveButton('grid-view')"
+      [class.view-active]="activeButton === 'grid-view'"
+    >
+      <app-custom-icons icon="grid_view" />
     </button>
   </div>
 
-  <button mat-fab aria-label="add" class="add-btn">
-    <app-custom-icons icon="add"/>
+  <button mat-fab aria-label="add" class="add-btn" (click)="openDialog()">
+    <app-custom-icons icon="add" />
   </button>
 </mat-toolbar>

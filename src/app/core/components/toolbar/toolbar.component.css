@@ -3,6 +3,7 @@
   margin-top: 32px;
   background-color: #222528;
   justify-content: space-between;
+  padding: 0;
   
   button {
   height: 40px;
