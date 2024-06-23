@@ -8,5 +8,5 @@ import { Component, Input } from '@angular/core';
   styleUrl: './avatar.component.css'
 })
 export class AvatarComponent {
-  @Input() avatarUrl: string = 'https://xsgames.co/randomusers/avatar.php?g=pixel'
+  @Input() avatarUrl?: string = 'https://xsgames.co/randomusers/avatar.php?g=pixel'
 }
