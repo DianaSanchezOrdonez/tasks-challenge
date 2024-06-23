@@ -1,0 +1,45 @@
+<mat-dialog-content class="modal-container">
+  <form>
+    <input matInput class="title-input" placeholder="Task Title" required />
+    
+    <div class="options-container">
+      <app-custom-select
+        [label]="'Estimate'"
+        [icon]="'estimate'"
+        [options]="[
+          { label: '0 Points', icon: 'estimate' },
+          { label: '1 Points', icon: 'estimate' },
+          { label: '2 Points', icon: 'estimate' },
+          { label: '3 Points', icon: 'estimate' },
+          { label: '4 Points', icon: 'estimate' },
+          { label: '8 Points', icon: 'estimate' }
+          ]"
+        [dropdownOpen]="dropdowns.estimate"
+        (toggle)="toggleDropdown('estimate')"
+        (select)="selectOption('estimate', $event)">
+      </app-custom-select>
+  
+      <app-custom-select
+        [label]="'Assignee'"
+        [icon]="'assignee'"
+        [options]="[
+          { label: '0 Points', icon: 'assignee' },
+          { label: '1 Points', icon: 'assignee' },
+          { label: '2 Points', icon: 'assignee' },
+          { label: '3 Points', icon: 'assignee' },
+          { label: '4 Points', icon: 'assignee' },
+          { label: '8 Points', icon: 'assignee' }
+        ]"
+        [dropdownOpen]="dropdowns.assignee"
+        (toggle)="toggleDropdown('assignee')"
+        (select)="selectOption('assignee', $event)">
+      </app-custom-select>
+    </div>
+    
+    <div class="dialog-actions" >
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button mat-button class="create-btn">Create</button>
+    </div>
+  </form>
+</mat-dialog-content>
+

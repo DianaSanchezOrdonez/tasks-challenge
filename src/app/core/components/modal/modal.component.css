@@ -1,0 +1,38 @@
+.options-container {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.title-input {
+  width: 100%;
+  box-sizing: border-box;
+  height: 32px;
+  margin-bottom: 24px;
+  background-color: transparent;
+  border: none;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  z-index: 0;
+  padding: 0;
+  gap: 24px;
+
+  button {
+    color: #ffffff;
+    height: 40px;
+    border-radius: 8px;
+    padding: 8px;
+  }
+
+  .create-btn {
+    background-color: #EBA59E;
+  }
+}
+
+.modal-container {
+  background-color: #393d41;
+  padding: 16px;
+}
