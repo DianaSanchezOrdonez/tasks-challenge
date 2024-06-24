@@ -1,45 +1,76 @@
 <mat-dialog-content class="modal-container">
-  <form>
-    <input matInput class="title-input" placeholder="Task Title" required />
-    
+  <form [formGroup]="createTaskForm">
+    <input
+      matInput
+      class="title-input"
+      placeholder="Task Title"
+      formControlName="title"
+    />
+
     <div class="options-container">
       <app-custom-select
+        type="icon-select"
         [label]="'Estimate'"
         [icon]="'estimate'"
         [options]="[
-          { label: '0 Points', icon: 'estimate' },
-          { label: '1 Points', icon: 'estimate' },
-          { label: '2 Points', icon: 'estimate' },
-          { label: '3 Points', icon: 'estimate' },
-          { label: '4 Points', icon: 'estimate' },
-          { label: '8 Points', icon: 'estimate' }
-          ]"
+          { label: '0 Points', value: 'ZERO', icon: 'estimate' },
+          { label: '1 Points', value: 'ONE', icon: 'estimate' },
+          { label: '2 Points', value: 'TWO', icon: 'estimate' },
+          { label: '4 Points', value: 'FOUR', icon: 'estimate' },
+          { label: '8 Points', value: 'EIGHT', icon: 'estimate' }
+        ]"
         [dropdownOpen]="dropdowns.estimate"
         (toggle)="toggleDropdown('estimate')"
-        (select)="selectOption('estimate', $event)">
+        (select)="selectOption('estimate', $event)"
+      >
       </app-custom-select>
-  
+
       <app-custom-select
+        type="avatar-select"
         [label]="'Assignee'"
         [icon]="'assignee'"
-        [options]="[
-          { label: '0 Points', icon: 'assignee' },
-          { label: '1 Points', icon: 'assignee' },
-          { label: '2 Points', icon: 'assignee' },
-          { label: '3 Points', icon: 'assignee' },
-          { label: '4 Points', icon: 'assignee' },
-          { label: '8 Points', icon: 'assignee' }
-        ]"
+        [options]="assigneesOptions"
         [dropdownOpen]="dropdowns.assignee"
         (toggle)="toggleDropdown('assignee')"
-        (select)="selectOption('assignee', $event)">
+        (select)="selectOption('assignee', $event)"
+      >
+      </app-custom-select>
+
+      <app-custom-select
+        type="checkbox-select"
+        [label]="'Label'"
+        [icon]="'label'"
+        [options]="[
+          { label: 'IOS', value: 'IOS' },
+          { label: 'ANDROID', value: 'ANDROID' },
+          { label: 'NODE_JS', value: 'NODE_JS' },
+          { label: 'REACT', value: 'REACT' },
+          { label: 'RAILS', value: 'RAILS' }
+        ]"
+        [dropdownOpen]="dropdowns.label"
+        (toggle)="toggleDropdown('label')"
+        (select)="selectOption('label', $event)"
+      >
+      </app-custom-select>
+
+      <app-custom-select
+        type="datetime-select"
+        [label]="'Due date'"
+        [icon]="'duedate'"
+        [options]="[
+          { label: 'IOS', value: 'IOS' },
+          { label: 'ANDROID', value: 'ANDROID' }
+        ]"
+        [dropdownOpen]="dropdowns.dueDate"
+        (toggle)="toggleDropdown('dueDate')"
+        (select)="selectOption('dueDate', $event)"
+      >
       </app-custom-select>
     </div>
-    
-    <div class="dialog-actions" >
+
+    <div class="dialog-actions">
       <button mat-button mat-dialog-close>Cancel</button>
-      <button mat-button class="create-btn">Create</button>
+      <button mat-button class="create-btn" (click)="onSubmit()">Create</button>
     </div>
   </form>
 </mat-dialog-content>
-
