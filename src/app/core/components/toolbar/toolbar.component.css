@@ -25,3 +25,7 @@ button.view-active {
   border-radius: 8px;
   color: #DA584B !important;
 }
+
+.mat-mdc-fab:not(.mdc-fab--extended) {
+  border-radius: 8px;
+}

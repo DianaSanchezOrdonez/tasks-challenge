@@ -12,8 +12,37 @@ body {
 }
 
 @font-face {
-  font-family: 'SFProDisplay';
-  src: url('assets/fonts/sf-pro-display/SFPRODISPLAYREGULAR.OTF') format('truetype');
+  font-family: "SFProDisplay";
+  src: url("assets/fonts/sf-pro-display/SFPRODISPLAYREGULAR.OTF")
+    format("truetype");
   font-weight: normal;
   font-style: normal;
+}
+
+.body-extra-large-bold {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: 0.75px;
+}
+
+.body-large-bold {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: 0.75px;
+}
+
+.body-medium-bold {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0.75px;
+}
+
+.body-medium-regular {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.75px;
 }
