@@ -57,20 +57,14 @@
         type="datetime-select"
         [label]="'Due date'"
         [icon]="'duedate'"
-        [options]="[
-          { label: 'IOS', value: 'IOS' },
-          { label: 'ANDROID', value: 'ANDROID' }
-        ]"
-        [dropdownOpen]="dropdowns.dueDate"
-        (toggle)="toggleDropdown('dueDate')"
-        (select)="selectOption('dueDate', $event)"
+        (selectDate)="onDateChanged($event)"
       >
       </app-custom-select>
     </div>
 
     <div class="dialog-actions">
       <button mat-button mat-dialog-close>Cancel</button>
-      <button mat-button class="create-btn" (click)="onSubmit()">Create</button>
+      <button mat-button class="create-btn" (click)="onSubmit()" [disabled]="!validFields()">Create</button>
     </div>
   </form>
 </mat-dialog-content>

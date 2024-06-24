@@ -12,8 +12,11 @@ import { AvatarComponent } from '../avatar/avatar.component';
   styleUrl: './custom-select.component.css',
 })
 export class CustomSelectComponent {
-  @Input() type: 'icon-select' | 'avatar-select' | 'checkbox-select' | 'datetime-select' = 
-    'icon-select';
+  @Input() type:
+    | 'icon-select'
+    | 'avatar-select'
+    | 'checkbox-select'
+    | 'datetime-select' = 'icon-select';
   @Input() label!: string;
   @Input() icon!: string;
   @Input() options!: SelectOption[];
@@ -21,6 +24,7 @@ export class CustomSelectComponent {
   @Output() toggle: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() select: EventEmitter<SelectOption> =
     new EventEmitter<SelectOption>();
+  @Output() selectDate = new EventEmitter<string>();
 
   selectedOption: SelectOption | null = null;
 
@@ -31,5 +35,9 @@ export class CustomSelectComponent {
   selectOption(option: SelectOption) {
     this.selectedOption = option;
     this.select.emit(option);
+  }
+
+  onDateChange(event: any) {
+    this.selectDate.emit(event?.target?.value)
   }
 }

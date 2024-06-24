@@ -28,6 +28,10 @@
   }
 
   .create-btn {
+    background-color: #DA584B;
+  }
+
+  .create-btn:disabled {
     background-color: #EBA59E;
   }
 }

@@ -60,12 +60,6 @@
 
 @if(type === 'datetime-select') {
   <div class="custom-select-container">
-    <div class="custom-select" (click)="toggleDropdown()">
-      <app-custom-icons [svgIcon]="icon"></app-custom-icons>
-      <span class="body-medium-bold">{{ selectedOption?.label || label }}</span>
-    </div>
-    <div *ngIf="dropdownOpen" class="options">
-      <input type="date"  class="date-picker" class="date-picker"/>
-    </div>
+    <input type="date" (change)="onDateChange($event)">
   </div>
 }

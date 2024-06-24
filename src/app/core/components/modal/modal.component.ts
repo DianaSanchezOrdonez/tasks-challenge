@@ -16,6 +16,7 @@ import { SelectOption } from '../custom-select/custom-select.model';
 import { DataService } from '../../services/data.service';
 import { User } from '../../../features/dashboard/models/user.model';
 import { TaskInput } from '../../services/models/task.input';
+import { StatusEnum } from '../../../features/dashboard/models/task.enums';
 
 type DropdownKeys = 'estimate' | 'assignee' | 'label' | 'dueDate';
 
@@ -43,6 +44,7 @@ export class ModalComponent {
       estimate: ['', Validators.required],
       assignee: ['', Validators.required],
       label: ['', Validators.required],
+      dueDate: ['', Validators.required],
     });
   }
 
@@ -50,12 +52,13 @@ export class ModalComponent {
     estimate: false,
     assignee: false,
     label: false,
-    dueDate: false
+    dueDate: false,
   };
 
   selectedOptions: { [key in DropdownKeys]?: SelectOption } = {};
   assigneesList: User[] = [];
   assigneesOptions: SelectOption[] = [];
+  selectedDueDate: string = '';
 
   toggleDropdown(select: DropdownKeys) {
     this.dropdowns[select] = !this.dropdowns[select];
@@ -102,17 +105,28 @@ export class ModalComponent {
     });
   }
 
+  onDateChanged(fecha: string) {
+    this.selectedDueDate = fecha;
+    // console.log('this.selectedDueDate', new Date(this.selectedDueDate))
+    this.createTaskForm.get('dueDate')?.setValue(this.selectedDueDate);
+  }
+
+  validFields(): boolean {
+    return this.createTaskForm.valid;
+  }
+
   onSubmit() {
     console.warn(this.createTaskForm.value);
-    const { title, estimate, assignee, label } = this.createTaskForm.value;
+    const { title, estimate, assignee, label, dueDate } =
+      this.createTaskForm.value;
 
-    // this.createTask({
-    //   name: title,
-    //   pointEstimate: estimate,
-    //   assigneeId: assignee,
-    //   dueDate: new Date().toDateString(),
-    //   status: StatusEnum.BACKLOG,
-    //   tags: [TagsEnum.NODE_JS],
-    // });
+    this.createTask({
+      name: title,
+      pointEstimate: estimate,
+      assigneeId: assignee,
+      dueDate: new Date(dueDate).toDateString(),
+      status: StatusEnum.BACKLOG,
+      tags: [label],
+    });
   }
 }
