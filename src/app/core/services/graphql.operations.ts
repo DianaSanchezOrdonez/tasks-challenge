@@ -26,4 +26,32 @@ const GET_TASKS_BY_STATUS = gql`
   }
 `;
 
-export { GET_PROFILE, GET_TASKS_BY_STATUS };
+const GET_USERS = gql`
+  query GetUsers {
+    users {
+      id
+      email
+      type
+      fullName
+      avatar
+    }
+  }
+`;
+
+const CREATE_TASK = gql`
+  mutation CreateTask($CreateTaskInput: CreateTaskInput!) {
+    createTask(input: $CreateTaskInput) {
+      id
+      name
+      assignee {
+        fullName
+      }
+      creator {
+        fullName
+      }
+      status
+    }
+  }
+`;
+
+export { GET_PROFILE, GET_TASKS_BY_STATUS, GET_USERS, CREATE_TASK };

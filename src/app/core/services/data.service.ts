@@ -2,10 +2,16 @@ import { Injectable } from '@angular/core';
 import { Task } from '../../features/dashboard/models/task.model';
 import { Observable } from 'rxjs';
 import { User } from '../../features/dashboard/models/user.model';
-import { Apollo } from 'apollo-angular';
-import { GET_PROFILE, GET_TASKS_BY_STATUS } from './graphql.operations';
+import { Apollo, MutationResult } from 'apollo-angular';
+import {
+  CREATE_TASK,
+  GET_PROFILE,
+  GET_TASKS_BY_STATUS,
+  GET_USERS,
+} from './graphql.operations';
 import { ApolloQueryResult } from '@apollo/client';
 import { FilterTaskInput } from './models/filters.input';
+import { TaskInput } from './models/task.input';
 
 @Injectable({
   providedIn: 'root',
@@ -39,5 +45,28 @@ export class DataService {
         headers: this.headers,
       },
     }).valueChanges;
+  }
+
+  getUsers(): Observable<ApolloQueryResult<{ users: User[] }>> {
+    return this.apolloClient.watchQuery<{ users: User[] }>({
+      query: GET_USERS,
+      context: {
+        headers: this.headers,
+      },
+    }).valueChanges;
+  }
+
+  createTask(
+    input: TaskInput
+  ): Observable<MutationResult<{ createTask: Task }>> {
+    return this.apolloClient.mutate<{ createTask: Task }>({
+      mutation: CREATE_TASK,
+      context: {
+        headers: this.headers,
+      },
+      variables: {
+        CreateTaskInput: input,
+      },
+    });
   }
 }
