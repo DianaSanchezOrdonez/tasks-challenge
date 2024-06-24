@@ -1,12 +1,71 @@
-<div class="custom-select-container">
-  <div class="custom-select" (click)="toggleDropdown()">
-    <app-custom-icons [svgIcon]="icon"></app-custom-icons>
-    <span class="body-medium-bold">{{ selectedOption?.label || label }}</span>
-  </div>
-  <div *ngIf="dropdownOpen" class="custom-options">
-    <div class="custom-option" *ngFor="let option of options" (click)="selectOption(option)">
-      <app-custom-icons [svgIcon]="option.icon"></app-custom-icons>
-      <span class="body-medium-bold">{{ option.label }}</span>
+@if(type === 'icon-select') {
+  <div class="custom-select-container">
+    <div class="custom-select" (click)="toggleDropdown()">
+      <app-custom-icons [svgIcon]="icon"></app-custom-icons>
+      <span class="body-medium-bold">{{ selectedOption?.label || label }}</span>
+    </div>
+    <div *ngIf="dropdownOpen" class="custom-options">
+      <span class="body-extra-large-bold">{{ label }}</span>
+      <div
+        class="custom-option"
+        *ngFor="let option of options"
+        (click)="selectOption(option)"
+      >
+        <app-custom-icons [svgIcon]="option.icon"></app-custom-icons>
+        <span class="body-medium-bold">{{ option.label }}</span>
+      </div>
     </div>
   </div>
-</div>
+} 
+
+@if(type === 'avatar-select') {
+  <div class="custom-select-container">
+    <div class="custom-select" (click)="toggleDropdown()">
+      <app-custom-icons [svgIcon]="icon"></app-custom-icons>
+      <span class="body-medium-bold">{{ selectedOption?.label || label }}</span>
+    </div>
+    <div *ngIf="dropdownOpen" class="custom-options">
+      <span class="body-extra-large-bold">{{ label }}</span>
+      <div
+        class="custom-option"
+        *ngFor="let option of options"
+        (click)="selectOption(option)"
+      >
+        <app-avatar [avatarUrl]="option.avatarUrl" />
+        <span class="body-medium-bold">{{ option.label }}</span>
+      </div>
+    </div>
+  </div>
+} 
+
+@if(type === 'checkbox-select') {
+  <div class="custom-select-container">
+    <div class="custom-select" (click)="toggleDropdown()">
+      <app-custom-icons [svgIcon]="icon"></app-custom-icons>
+      <span class="body-medium-bold">{{ selectedOption?.label || label }}</span>
+    </div>
+    <div *ngIf="dropdownOpen" class="custom-options">
+      <span class="body-extra-large-bold">{{ label }}</span>
+      <div
+        class="custom-option"
+        *ngFor="let option of options"
+        (click)="selectOption(option)"
+      >
+        <input type="checkbox" />
+        <span class="body-medium-bold">{{ option.label }}</span>
+      </div>
+    </div>
+  </div>
+} 
+
+@if(type === 'datetime-select') {
+  <div class="custom-select-container">
+    <div class="custom-select" (click)="toggleDropdown()">
+      <app-custom-icons [svgIcon]="icon"></app-custom-icons>
+      <span class="body-medium-bold">{{ selectedOption?.label || label }}</span>
+    </div>
+    <div *ngIf="dropdownOpen" class="options">
+      <input type="date"  class="date-picker" class="date-picker"/>
+    </div>
+  </div>
+}

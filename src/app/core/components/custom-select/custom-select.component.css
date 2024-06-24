@@ -1,6 +1,6 @@
 .custom-select-container {
   background-color: rgba(148, 151, 154, 0.1);
-  width: 128px;
+  min-width: 128px;
   height: 32px;
   padding: 4px 16px;
   color: #ffffff; 
@@ -10,11 +10,12 @@
     display: flex;
     gap: 8px;
     border-radius: 4px;
+    cursor: pointer;
   }
 
   .custom-options {
     background-color: #393D41;
-    width: 128px;
+    min-width: 128px;
     color: #ffffff;
     position: fixed;
     z-index: 1;
@@ -23,13 +24,47 @@
     border-radius: 8px;
     padding: 8px 0;
     text-align: center;
+    cursor: pointer;
 
     .custom-option {
       display: flex;
-      justify-content: center;
+      /* justify-content: center; */
       padding: 4px 16px;
+      gap: 8px;
+    }
+
+    .body-extra-large-bold {
+      color: #94979A;
     }
   }
+}
+
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* Contenedor del calendario */
+.options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.date-picker {
+  width: 100%;
+  padding: 5px;
+  font-size: 16px;
 }
 
 
