@@ -1,27 +1,21 @@
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { AvatarComponent } from '../avatar/avatar.component';
 import { CustomIconsComponent } from '../custom-icons/custom-icons.component';
 import { DataService } from '../../services/data.service';
 import { User } from '../../../features/dashboard/models/user.model';
-import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [
-    FormsModule,
-    MatInputModule,
-    AvatarComponent,
-    CustomIconsComponent,
-    AsyncPipe,
-  ],
+  imports: [MatInputModule, AvatarComponent, CustomIconsComponent],
   templateUrl: './search.component.html',
   styleUrl: './search.component.css',
 })
 export class SearchComponent {
   user: User | null = null;
+
+  @Output() filter = new EventEmitter<string>();
 
   constructor(private dataService: DataService) {}
 
@@ -35,5 +29,9 @@ export class SearchComponent {
         console.error('Error fetching profile', error);
       },
     });
+  }
+
+  onChangeFilter(event: any) {
+    this.filter.emit(event.target.value);
   }
 }

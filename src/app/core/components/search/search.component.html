@@ -1,10 +1,16 @@
-<form class="search-form">
+<div class="search-form">
   <div class="input-icon">
-    <app-custom-icons icon="search"/><input type="text" class="body-medium-regular">
+    <app-custom-icons icon="search" />
+    <input
+      type="text"
+      class="body-medium-regular"
+      id="search"
+      (change)="onChangeFilter($event)"
+    />
   </div>
 
   <div class="profile-container">
-    <app-custom-icons icon="notifications_none"/>
-    <app-avatar [avatarUrl]="user?.avatar"/>
+    <app-custom-icons icon="notifications_none" />
+    <app-avatar [avatarUrl]="user?.avatar" />
   </div>
-</form>
+</div>

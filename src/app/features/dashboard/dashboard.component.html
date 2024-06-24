@@ -1,7 +1,9 @@
+<app-search (filter)="receivedFilter($event)"></app-search>
+<app-toolbar></app-toolbar>
 <div class="dashboard-container">
   <div class="column">
     <h2 class="column-header body-large-bold">Working ({{ workingTasks.length }})</h2>
-    <div class="column-content" *ngIf="workingTasks.length > 0; else skeleton">
+    <div class="column-content" *ngIf="workingLoading === false; else skeleton">
       @for (task of workingTasks; track $index) {
         <app-card [task]="task" />
         }
@@ -9,7 +11,7 @@
   </div>
   <div class="column">
     <h2 class="column-header body-large-bold">In Progress ({{ inProgressTasks.length }})</h2>
-    <div class="column-content" *ngIf="workingTasks.length > 0; else skeleton">
+    <div class="column-content" *ngIf="inProgressLoading === false; else skeleton">
       @for (task of inProgressTasks; track $index) {
         <app-card [task]="task" />
         }
@@ -17,7 +19,7 @@
   </div>
   <div class="column">
     <h2 class="column-header body-large-bold">Completed ({{ completedTasks.length }})</h2>
-    <div class="column-content" *ngIf="workingTasks.length > 0; else skeleton">
+    <div class="column-content" *ngIf="completedLoading === false; else skeleton">
       @for (task of completedTasks; track $index) {
         <app-card [task]="task" />
         }
