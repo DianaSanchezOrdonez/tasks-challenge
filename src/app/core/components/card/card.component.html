@@ -6,16 +6,18 @@
         <app-custom-icons icon="more_horiz" />
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item>
+        <button mat-menu-item (click)="openDialog()">
           <app-custom-icons icon="mode_edit_outline" />Edit
         </button>
-        <button mat-menu-item>
+        <button mat-menu-item (click)="deleteTask(task.id)">
           <app-custom-icons icon="delete_outline" />Delete
         </button>
       </mat-menu>
     </div>
     <p class="task-info">
-      <span class="body-medium-bold">{{ task.pointEstimate | lowercase | stringtonumber }} Points</span>
+      <span class="body-medium-bold"
+        >{{ task.pointEstimate | lowercase | stringtonumber }} Points</span
+      >
       <app-chips
         [item]="{
           type: 'date',
@@ -28,12 +30,13 @@
     </p>
     <div class="tags-info">
       @for (tag of task.tags; track $index) {
-        <app-chips
+      <app-chips
         [item]="{
           type: 'text',
           content: tag,
           className: (tag | lowercase) + '-tag'
-        }"/>
+        }"
+      />
       }
     </div>
   </mat-card-content>

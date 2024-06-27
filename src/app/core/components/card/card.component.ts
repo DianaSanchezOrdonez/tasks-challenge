@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { Task } from '../../../features/dashboard/models/task.model';
 import { ChipsComponent } from '../chips/chips.component';
@@ -8,6 +8,9 @@ import { CustomIconsComponent } from '../custom-icons/custom-icons.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { ConvertStringToNumberPipe } from '../../pipes/convert-string-to-number';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { ModalComponent } from '../modal/modal.component';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-card',
@@ -20,13 +23,18 @@ import { ConvertStringToNumberPipe } from '../../pipes/convert-string-to-number'
     CustomIconsComponent,
     MatButtonModule,
     MatMenuModule,
-    ConvertStringToNumberPipe
+    ConvertStringToNumberPipe,
+    MatDialogModule,
   ],
   templateUrl: './card.component.html',
   styleUrl: './card.component.css',
 })
 export class CardComponent {
+  readonly dialog = inject(MatDialog);
+
   @Input() task!: Task;
+
+  constructor(private dataService: DataService) {}
 
   validDueDateStyle(value: string): string {
     const currentDate = new Date().getTime();
@@ -42,5 +50,24 @@ export class CardComponent {
     } else {
       return 'on-time';
     }
+  }
+
+  openDialog() {
+    this.dialog.open(ModalComponent, {
+      data: this.task,
+    });
+  }
+
+  deleteTask(taskId: string) {
+    this.dataService.deleteTask(taskId).subscribe({
+      next: (result) => {
+        if (result.data) {
+          console.log('Task deleted:', result.data.deleteTask);
+        }
+      },
+      error: (error) => {
+        console.error('There was an error deleting the task:', error);
+      },
+    });
   }
 }
