@@ -14,4 +14,12 @@ enum StatusEnum {
   CANCELLED = 'CANCELLED',
 }
 
-export { TagsEnum, StatusEnum };
+enum PointEstimateEnum {
+  EIGHT = 'EIGHT',
+  FOUR = 'FOUR',
+  ONE = 'ONE',
+  TWO = 'TWO', 
+  ZERO = 'ZERO',
+  }
+
+export { TagsEnum, StatusEnum, PointEstimateEnum };

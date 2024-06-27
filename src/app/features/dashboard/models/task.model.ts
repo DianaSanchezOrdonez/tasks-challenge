@@ -1,4 +1,4 @@
-import { StatusEnum } from "./task.enums";
+import { PointEstimateEnum, StatusEnum } from "./task.enums";
 import { User } from "./user.model";
 
 interface Task {
@@ -10,7 +10,7 @@ interface Task {
 	creator: User;
 	position: number;
 	dueDate: string;
-	pointEstimate: string;
+	pointEstimate: PointEstimateEnum;
 	createdAt: string;
 }
 

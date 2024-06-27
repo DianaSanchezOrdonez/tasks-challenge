@@ -15,12 +15,15 @@ const GET_PROFILE = gql`
 const GET_TASKS_BY_STATUS = gql`
   query GetTasksByStatus($FilterTaskInput: FilterTaskInput!) {
     tasks(input: $FilterTaskInput) {
+      id
       name
       pointEstimate
       dueDate
       tags
       assignee {
+        id
         avatar
+        fullName
       }
     }
   }
@@ -50,8 +53,35 @@ const CREATE_TASK = gql`
         fullName
       }
       status
+      dueDate
     }
   }
 `;
 
-export { GET_PROFILE, GET_TASKS_BY_STATUS, GET_USERS, CREATE_TASK };
+const UPDATE_TASK = gql`
+  mutation UpdateTask($UpdateTaskInput: UpdateTaskInput!){
+    updateTask(input: $UpdateTaskInput) {
+      id
+      name
+      assignee {
+        fullName
+      }
+      creator {
+        fullName
+      }
+      status
+      dueDate
+    } 
+  }
+`
+
+const DELETE_TASK = gql`
+  mutation DeleteTask($DeleteTaskInput: DeleteTaskInput!){
+    deleteTask(input: $DeleteTaskInput) {
+      id
+      name
+    } 
+  }
+`
+
+export { GET_PROFILE, GET_TASKS_BY_STATUS, GET_USERS, CREATE_TASK, UPDATE_TASK, DELETE_TASK };

@@ -5,13 +5,15 @@ import { User } from '../../features/dashboard/models/user.model';
 import { Apollo, MutationResult } from 'apollo-angular';
 import {
   CREATE_TASK,
+  DELETE_TASK,
   GET_PROFILE,
   GET_TASKS_BY_STATUS,
   GET_USERS,
+  UPDATE_TASK,
 } from './graphql.operations';
 import { ApolloQueryResult } from '@apollo/client';
 import { FilterTaskInput } from './models/filters.input';
-import { TaskInput } from './models/task.input';
+import { TaskInput, TaskUpdateInput } from './models/task.input';
 
 @Injectable({
   providedIn: 'root',
@@ -66,6 +68,34 @@ export class DataService {
       },
       variables: {
         CreateTaskInput: input,
+      },
+    });
+  }
+
+  updateTask(
+    input: TaskUpdateInput
+  ): Observable<MutationResult<{ updateTask: Task }>> {
+    return this.apolloClient.mutate<{ updateTask: Task }>({
+      mutation: UPDATE_TASK,
+      context: {
+        headers: this.headers,
+      },
+      variables: {
+        UpdateTaskInput: input,
+      },
+    });
+  }
+
+  deleteTask(
+    taskId: string
+  ): Observable<MutationResult<{ deleteTask: Pick<Task, 'id' | 'name'> }>> {
+    return this.apolloClient.mutate<{ deleteTask: Pick<Task, 'id' | 'name'> }>({
+      mutation: DELETE_TASK,
+      context: {
+        headers: this.headers,
+      },
+      variables: {
+        DeleteTaskInput: { id: taskId },
       },
     });
   }
