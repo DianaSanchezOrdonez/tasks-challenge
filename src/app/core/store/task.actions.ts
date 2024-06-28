@@ -19,17 +19,17 @@ export const addTaskFailure = createAction(
 );
 
 export const deleteTask = createAction(
-  'delete Task',
+  '[Task] Delete Task',
   props<{ taskId: string }>()
 );
 
 export const deleteTaskSuccess = createAction(
-  '[Task] List Tasks Success',
+  '[Task] Delete Task Success',
   props<{ taskId: string }>()
 );
 
 export const deleteTaskFailure = createAction(
-  '[Task] List Tasks Failure',
+  '[Task] Delete Task Failure',
   props<{ error: any }>()
 );
 
@@ -49,7 +49,7 @@ export const editTaskFailure = createAction(
 );
 
 export const listTasks = createAction(
-  'get all tasks',
+  '[Task] List Tasks',
   props<{ filter?: FilterTaskInput }>()
 );
 

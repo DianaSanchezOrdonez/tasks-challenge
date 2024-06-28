@@ -20,6 +20,7 @@ const GET_TASKS_BY_STATUS = gql`
       pointEstimate
       dueDate
       tags
+      status
       assignee {
         id
         avatar

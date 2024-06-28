@@ -10,7 +10,9 @@ import { MatMenuModule } from '@angular/material/menu';
 import { ConvertStringToNumberPipe } from '../../pipes/convert-string-to-number';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
-import { DataService } from '../../services/data.service';
+import { Store } from '@ngrx/store';
+import { deleteTask } from '../../store/task.actions';
+import { TaskState } from '../../store/task.state';
 
 @Component({
   selector: 'app-card',
@@ -34,7 +36,7 @@ export class CardComponent {
 
   @Input() task!: Task;
 
-  constructor(private dataService: DataService) {}
+  constructor(private store: Store<{ taskState: TaskState }>) {}
 
   validDueDateStyle(value: string): string {
     const currentDate = new Date().getTime();
@@ -59,15 +61,6 @@ export class CardComponent {
   }
 
   deleteTask(taskId: string) {
-    this.dataService.deleteTask(taskId).subscribe({
-      next: (result) => {
-        if (result.data) {
-          console.log('Task deleted:', result.data.deleteTask);
-        }
-      },
-      error: (error) => {
-        console.error('There was an error deleting the task:', error);
-      },
-    });
+    this.store.dispatch(deleteTask({ taskId }));
   }
 }

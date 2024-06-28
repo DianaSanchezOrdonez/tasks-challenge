@@ -3,6 +3,8 @@ import {
   addTaskSuccess,
   deleteTaskSuccess,
   editTaskSuccess,
+  listTasks,
+  listTasksFailure,
   listTasksSuccess,
 } from './task.actions';
 import { TaskState } from './task.state';
@@ -35,10 +37,20 @@ export const taskReducer = createReducer(
     loading: false,
     error: null,
   })),
+  on(listTasks, (state) => ({
+    ...state,
+    loading: true,
+    error: null,
+  })),
   on(listTasksSuccess, (state, { tasks }) => ({
     ...state,
-    tasks: tasks,
+    tasks,
     loading: false,
     error: null,
+  })),
+  on(listTasksFailure, (state, { error }) => ({
+    ...state,
+    loading: false,
+    error: error,
   }))
 );

@@ -1,13 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import {
   FormBuilder,
-  FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DATA,
+  MatDialogModule,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
@@ -15,8 +18,12 @@ import { CustomSelectComponent } from '../custom-select/custom-select.component'
 import { SelectOption } from '../custom-select/custom-select.model';
 import { DataService } from '../../services/data.service';
 import { User } from '../../../features/dashboard/models/user.model';
-import { TaskInput } from '../../services/models/task.input';
 import { StatusEnum } from '../../../features/dashboard/models/task.enums';
+import { Task } from '../../../features/dashboard/models/task.model';
+import { ConvertStringToNumberPipe } from '../../pipes/convert-string-to-number';
+import { Store } from '@ngrx/store';
+import { TaskState } from 'zone.js/lib/zone-impl';
+import { addTask, editTask } from '../../store/task.actions';
 
 type DropdownKeys = 'estimate' | 'assignee' | 'label' | 'dueDate';
 
@@ -31,20 +38,30 @@ type DropdownKeys = 'estimate' | 'assignee' | 'label' | 'dueDate';
     ReactiveFormsModule,
     MatInputModule,
     CustomSelectComponent,
+    ConvertStringToNumberPipe,
   ],
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.css',
 })
 export class ModalComponent {
   createTaskForm: FormGroup;
+  task?: Task;
+  currentDate: Date = new Date();
 
-  constructor(private dataService: DataService, private fb: FormBuilder) {
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: Task | undefined,
+    private dialogRef: MatDialogRef<ModalComponent>,
+    private dataService: DataService,
+    private fb: FormBuilder,
+    private store: Store<{ taskState: TaskState }>
+  ) {
+    this.task = data;
     this.createTaskForm = this.fb.group({
-      title: ['', Validators.required],
-      estimate: ['', Validators.required],
-      assignee: ['', Validators.required],
-      label: ['', Validators.required],
-      dueDate: ['', Validators.required],
+      title: [this.data?.name, Validators.required],
+      estimate: [this.data?.pointEstimate, Validators.required],
+      assignee: [this.data?.assignee.id, Validators.required],
+      label: [this.data?.tags, Validators.required],
+      dueDate: [this.data?.dueDate, Validators.required],
     });
   }
 
@@ -82,25 +99,14 @@ export class ModalComponent {
   }
 
   ngOnInit() {
+    console.log('edit modal', this.task);
+
     this.dataService.getUsers().subscribe({
       next: (result) => {
         this.assigneesList = result.data.users;
       },
       error: (error) => {
         console.error('Error fetching users', error);
-      },
-    });
-  }
-
-  createTask(input: TaskInput) {
-    this.dataService.createTask(input).subscribe({
-      next: (result) => {
-        if (result.data) {
-          console.log('Task created:', result.data.createTask);
-        }
-      },
-      error: (error) => {
-        console.error('There was an error creating the task:', error);
       },
     });
   }
@@ -116,17 +122,39 @@ export class ModalComponent {
   }
 
   onSubmit() {
-    console.warn(this.createTaskForm.value);
+    console.log('coming form', this.createTaskForm.value);
     const { title, estimate, assignee, label, dueDate } =
       this.createTaskForm.value;
 
-    this.createTask({
-      name: title,
-      pointEstimate: estimate,
-      assigneeId: assignee,
-      dueDate: new Date(dueDate).toDateString(),
-      status: StatusEnum.BACKLOG,
-      tags: [label],
-    });
+    if (this.task) {
+      this.store.dispatch(
+        editTask({
+          input: {
+            id: this.task.id,
+            name: title,
+            pointEstimate: estimate,
+            assigneeId: assignee,
+            dueDate: new Date(dueDate).toDateString(),
+          },
+        })
+      );
+
+      return this.dialogRef.close();
+    }
+
+    this.store.dispatch(
+      addTask({
+        input: {
+          name: title,
+          pointEstimate: estimate,
+          assigneeId: assignee,
+          dueDate: new Date(dueDate).toDateString(),
+          status: StatusEnum.BACKLOG,
+          tags: [label],
+        },
+      })
+    );
+
+    return this.dialogRef.close();
   }
 }

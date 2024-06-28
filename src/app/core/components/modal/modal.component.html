@@ -10,7 +10,11 @@
     <div class="options-container">
       <app-custom-select
         type="icon-select"
-        [label]="'Estimate'"
+        [label]="
+          task?.pointEstimate
+            ? (task!.pointEstimate | lowercase | stringtonumber) + ' Points'
+            : 'Estimate'
+        "
         [icon]="'estimate'"
         [options]="[
           { label: '0 Points', value: 'ZERO', icon: 'estimate' },
@@ -27,7 +31,7 @@
 
       <app-custom-select
         type="avatar-select"
-        [label]="'Assignee'"
+        [label]="task?.assignee?.fullName ?? 'Assignee'"
         [icon]="'assignee'"
         [options]="assigneesOptions"
         [dropdownOpen]="dropdowns.assignee"
@@ -38,7 +42,7 @@
 
       <app-custom-select
         type="checkbox-select"
-        [label]="'Label'"
+        [label]="task?.tags?.length ? (task?.tags)![0] : 'Label'"
         [icon]="'label'"
         [options]="[
           { label: 'IOS', value: 'IOS' },
@@ -55,7 +59,7 @@
 
       <app-custom-select
         type="datetime-select"
-        [label]="'Due date'"
+        [label]="task?.dueDate ?? currentDate"
         [icon]="'duedate'"
         (selectDate)="onDateChanged($event)"
       >
@@ -64,7 +68,14 @@
 
     <div class="dialog-actions">
       <button mat-button mat-dialog-close>Cancel</button>
-      <button mat-button class="create-btn" (click)="onSubmit()" [disabled]="!validFields()">Create</button>
+      <button
+        mat-button
+        class="create-btn"
+        (click)="onSubmit()"
+        [disabled]="!validFields()"
+      >
+        {{ task ? "Update" : "Create" }}
+      </button>
     </div>
   </form>
 </mat-dialog-content>

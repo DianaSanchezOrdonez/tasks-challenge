@@ -10,6 +10,10 @@ import {
   ApolloLink,
   InMemoryCache,
 } from '@apollo/client/core';
+import { provideStore } from '@ngrx/store';
+import { taskReducer } from './core/store/task.reducer';
+import { provideEffects } from '@ngrx/effects';
+import { TaskEffects } from './core/store/task.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -29,5 +33,7 @@ export const appConfig: ApplicationConfig = {
       deps: [HttpLink],
     },
     Apollo,
+    provideStore({ taskState: taskReducer }),
+    provideEffects([TaskEffects]),
   ],
 };
