@@ -1,0 +1,150 @@
+<div class="tasks-container">
+  <div class="grid-table-header">
+    <div class="column"># Task Name</div>
+    <div class="column">Task Tags</div>
+    <div class="column">Estimate</div>
+    <div class="column">Task Assign Name</div>
+    <div class="column">Due Date</div>
+  </div>
+
+  <mat-accordion>
+    <mat-expansion-panel
+      (opened)="panelOpenState.set(true)"
+      (closed)="panelOpenState.set(false)"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title class="body-large-bold">
+          To Do ({{ (backlogTasks$ | async)?.length }})
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      @for (task of backlogTasks$ | async; track $index) {
+      <div class="grid-table-content body-medium-regular">
+        <div class="column">
+          {{ task.name }}
+          <div class="task-comments">
+            <app-custom-icons svgIcon="attachement" />
+            <div><span>5</span><app-custom-icons svgIcon="thread" /></div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="tags-info">
+            @for (tag of task.tags; track $index) {
+            <app-chips
+              [item]="{
+                type: 'text',
+                content: tag,
+                className: (tag | lowercase) + '-tag'
+              }"
+            />
+            }
+          </div>
+        </div>
+        <div class="column">
+          {{ task.pointEstimate | lowercase | stringtonumber }} Points
+        </div>
+        <div class="column">
+          <app-avatar [avatarUrl]="task.assignee.avatar" />
+          <span>{{ task.assignee.fullName }}</span>
+        </div>
+        <div class="column">
+          {{ task.dueDate | date : "d MMMM, yyyy" }}
+        </div>
+      </div>
+      }
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel
+      (opened)="panelOpenState.set(true)"
+      (closed)="panelOpenState.set(false)"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title class="body-large-bold">
+          To Do ({{ (inProgressTasks$ | async)?.length }})
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      @for (task of inProgressTasks$ | async; track $index) {
+      <div class="grid-table-content body-medium-regular">
+        <div class="column">
+          {{ task.name }}
+          <div class="task-comments">
+            <app-custom-icons svgIcon="attachement" />
+            <div><span>5</span><app-custom-icons svgIcon="thread" /></div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="tags-info">
+            @for (tag of task.tags; track $index) {
+            <app-chips
+              [item]="{
+                type: 'text',
+                content: tag,
+                className: (tag | lowercase) + '-tag'
+              }"
+            />
+            }
+          </div>
+        </div>
+        <div class="column">
+          {{ task.pointEstimate | lowercase | stringtonumber }} Points
+        </div>
+        <div class="column">
+          <app-avatar [avatarUrl]="task.assignee.avatar" />
+          <span>{{ task.assignee.fullName }}</span>
+        </div>
+        <div class="column">
+          {{ task.dueDate | date : "d MMMM, yyyy" }}
+        </div>
+      </div>
+      }
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel
+      (opened)="panelOpenState.set(true)"
+      (closed)="panelOpenState.set(false)"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title class="body-large-bold">
+          To Do ({{ (doneTasks$ | async)?.length }})
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      @for (task of doneTasks$ | async; track $index) {
+      <div class="grid-table-content body-medium-regular">
+        <div class="column">
+          {{ task.name }}
+          <div class="task-comments">
+            <app-custom-icons svgIcon="attachement" />
+            <div><span>5</span><app-custom-icons svgIcon="thread" /></div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="tags-info">
+            @for (tag of task.tags; track $index) {
+            <app-chips
+              [item]="{
+                type: 'text',
+                content: tag,
+                className: (tag | lowercase) + '-tag'
+              }"
+            />
+            }
+          </div>
+        </div>
+        <div class="column">
+          {{ task.pointEstimate | lowercase | stringtonumber }} Points
+        </div>
+        <div class="column">
+          <app-avatar [avatarUrl]="task.assignee.avatar" />
+          <span>{{ task.assignee.fullName }}</span>
+        </div>
+        <div class="column">
+          {{ task.dueDate | date : "d MMMM, yyyy" }}
+        </div>
+      </div>
+      }
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

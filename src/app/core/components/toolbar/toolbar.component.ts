@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output, inject } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CustomIconsComponent } from '../custom-icons/custom-icons.component';
 import { MatButtonModule } from '@angular/material/button';
@@ -21,8 +21,10 @@ import { ModalComponent } from '../modal/modal.component';
   styleUrl: './toolbar.component.css',
 })
 export class ToolbarComponent {
+  @Output() viewSelection = new EventEmitter<string>();
+
   activeButton: string = 'grid-view';
-  readonly dialog = inject(MatDialog);
+  dialog = inject(MatDialog);
 
   openDialog() {
     this.dialog.open(ModalComponent);
@@ -30,5 +32,6 @@ export class ToolbarComponent {
 
   setActiveButton(buttonId: string) {
     this.activeButton = buttonId;
+    this.viewSelection.emit(buttonId);
   }
 }
