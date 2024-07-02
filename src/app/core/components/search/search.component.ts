@@ -4,6 +4,8 @@ import { AvatarComponent } from '../avatar/avatar.component';
 import { CustomIconsComponent } from '../custom-icons/custom-icons.component';
 import { DataService } from '../../services/data.service';
 import { User } from '../../../features/dashboard/models/user.model';
+import { Store } from '@ngrx/store';
+import { TaskState } from '../../store/task.typos';
 
 @Component({
   selector: 'app-search',
@@ -17,13 +19,15 @@ export class SearchComponent {
 
   @Output() filter = new EventEmitter<string>();
 
-  constructor(private dataService: DataService) {}
+  constructor(
+    private dataService: DataService,
+    private store: Store<{ taskState: TaskState }>
+  ) {}
 
   ngOnInit() {
     this.dataService.getProfile().subscribe({
       next: (result) => {
         this.user = result.data.profile;
-        console.log('this.user inside subscription', this.user);
       },
       error: (error) => {
         console.error('Error fetching profile', error);
@@ -31,7 +35,7 @@ export class SearchComponent {
     });
   }
 
-  onChangeFilter(event: any) {
+  onInputChange(event: any) {
     this.filter.emit(event.target.value);
   }
 }
