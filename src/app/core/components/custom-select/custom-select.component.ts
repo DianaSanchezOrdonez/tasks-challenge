@@ -17,7 +17,7 @@ export class CustomSelectComponent {
     | 'avatar-select'
     | 'checkbox-select'
     | 'datetime-select' = 'icon-select';
-  @Input() label!: string;
+  @Input() label!: string | Date;
   @Input() icon!: string;
   @Input() options!: SelectOption[];
   @Input() dropdownOpen: boolean = false;
@@ -38,6 +38,6 @@ export class CustomSelectComponent {
   }
 
   onDateChange(event: any) {
-    this.selectDate.emit(event?.target?.value)
+    this.selectDate.emit(event?.target?.value);
   }
 }

@@ -21,8 +21,14 @@
 @if(type === 'avatar-select') {
   <div class="custom-select-container">
     <div class="custom-select" (click)="toggleDropdown()">
-      <app-custom-icons [svgIcon]="icon"></app-custom-icons>
-      <span class="body-medium-bold">{{ selectedOption?.label || label }}</span>
+      @if(selectedOption) {
+        <app-avatar [avatarUrl]="selectedOption.avatarUrl" />
+        <span class="body-medium-bold">{{ selectedOption.label }}</span>
+      } @else {
+        <app-custom-icons [svgIcon]="icon"></app-custom-icons>
+        <span class="body-medium-bold">{{ label }}</span>
+      }
+     
     </div>
     <div *ngIf="dropdownOpen" class="custom-options">
       <span class="body-extra-large-bold">{{ label }}</span>
@@ -60,6 +66,6 @@
 
 @if(type === 'datetime-select') {
   <div class="custom-select-container">
-    <input type="date" (change)="onDateChange($event)">
+    <input type="date" [value]="label | date : 'yyyy-MM-dd'" (change)="onDateChange($event)">
   </div>
 }
