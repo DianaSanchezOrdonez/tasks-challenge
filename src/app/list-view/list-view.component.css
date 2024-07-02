@@ -1,0 +1,60 @@
+.tasks-container {
+  margin-top: 24px;
+
+  .grid-table-header,
+  .grid-table-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  }
+
+  .grid-table-header {
+    border: 1px solid var(--neutral-3);
+    border-radius: 4px;
+    margin-bottom: 16px;
+
+    .column {
+      padding: 16px;
+      border-right: 1px solid var(--neutral-3);
+    }
+  }
+
+  .grid-table-content {
+    .column {
+      border-right: 1px solid var(--neutral-3);
+      align-items: center;
+      padding: 0 16px;
+      height: 56px;
+      display: flex;
+      gap: 8px;
+      border-bottom: 1px solid var(--neutral-3);
+    }
+
+    .column:first-child {
+      justify-content: space-between;
+    }
+
+    .task-comments {
+      display: flex;
+    }
+  }
+}
+
+.mat-expansion-panel {
+  background-color: var(--neutral-4);
+  border: 1px solid var(--neutral-3);
+  color: var(--neutral-1);
+  margin: 16px 0;
+}
+
+.mat-expansion-panel-header {
+  padding: 0 16px;
+
+  .mat-expansion-panel-header-title {
+    color: var(--neutral-1);
+  }
+}
+
+::ng-deep .mat-expansion-panel .mat-expansion-panel-body {
+  padding: 0;
+  border: 1px solid var(--neutral-3);
+}

@@ -1,6 +1,6 @@
 mat-drawer-container {
   background-color: inherit;
-  color: #ffffff;
+  color: var(--neutral-1);
 }
 
 .drawer-container {
@@ -12,7 +12,7 @@ mat-drawer-container {
 mat-drawer {
   width: 232px;
   border-radius: 24px;
-  background-color: #2C2F33;
+  background-color: var(--neutral-4);
   text-align: center;
 }
 

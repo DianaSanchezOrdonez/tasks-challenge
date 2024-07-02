@@ -1,4 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --neutral-1: #ffffff;
+  --neutral-2: #94979A;
+  --neutral-3: #393D41;
+  --neutral-4: #2C2F33;
+  --neutral-5: #222528;
+  --primary-2: #EBA59E;
+  --primary-4: #DA584B;
+  --secondary-4: #70B252;
+  --tertiary-4: #E5B454;
+}
 
 html,
 body {
@@ -8,7 +19,7 @@ body {
   margin: 0;
   /* font-family: "SFProDisplay", Roboto, "Helvetica Neue", sans-serif; */
   font-family: "SFProDisplay";
-  background-color: #222528;
+  background-color: var(--neutral-5);
 }
 
 @font-face {

@@ -1,0 +1,41 @@
+.dashboard-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.column {
+  /* background-color: #f0f0f0; */
+  .column-header {
+    color: var(--neutral-1);
+  }
+
+  .column-content {
+    display: grid;
+    gap: 16px;
+    align-self: flex-start;
+  }
+}
+
+/* card-css */
+mat-card {
+  background-color: var(--neutral-4);
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.footer-skeleton {
+  padding: 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tags-skeleton {
+  display: flex;
+  gap: 8px;
+
+  ngx-skeleton-loader {
+    width: 20%;
+  }
+}

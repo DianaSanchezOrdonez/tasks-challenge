@@ -38,4 +38,8 @@ mat-card {
   display: flex;
   align-items: center;
   gap: 16px;
+
+  ::ng-deep .mat-icon {
+    height: 16px !important;
+  }
 }

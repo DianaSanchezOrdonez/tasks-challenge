@@ -22,21 +22,22 @@
   position: relative;
 
   button {
-    color: #ffffff;
+    color: var(--neutral-1);
     border-radius: 8px;
     padding: 8px;
   }
 
   .create-btn {
-    background-color: #DA584B;
+    background-color: var(--primary-4);
   }
 
   .create-btn:disabled {
-    background-color: #EBA59E;
+    background-color: var(--primary-2);
   }
 }
 
 .modal-container {
-  background-color: #393d41;
+  background-color: var(--neutral-3);
   padding: 16px;
+  /* border-radius: 8px; */
 }

@@ -10,25 +10,25 @@
 
 .on-time { 
   background-color: rgba(148, 151, 154, 0.1);
-  color: #ffffff;
+  color: var(--neutral-1);
 }
 
 .warning-time,
 .android-tag { 
   background-color: rgba(229, 180, 84, 0.1);
-  color: #E5B454;
+  color: var(--tertiary-4);
 }
 
 .danger-time,
 .rails-tag { 
   background-color: rgba(218, 88, 75, 0.1);
-  color: #DA584B;
+  color: var(--primary-4);
 }
 
 .ios-tag,
 .node_js-tag  { 
   background-color: rgba(112, 178, 82, 0.1);
-  color: #70B252
+  color: var(--secondary-4);
 }
 
 .react-tag {

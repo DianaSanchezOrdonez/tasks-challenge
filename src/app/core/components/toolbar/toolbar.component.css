@@ -1,7 +1,7 @@
 .mat-toolbar-single-row {
   height: 48px;
   margin-top: 32px;
-  background-color: #222528;
+  background-color: var(--neutral-5);
   justify-content: space-between;
   padding: 0;
   
@@ -11,19 +11,19 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
-  color: #ffffff;
+  color: var(--neutral-1);
   }
 
   .add-btn {
-    background-color: #DA584B;
+    background-color: var(--primary-4);
     border-radius: 8px;
   }
 }
 
 button.view-active {
-  border: 1px solid #DA584B !important;
+  border: 1px solid var(--primary-4) !important;
   border-radius: 8px;
-  color: #DA584B !important;
+  color: var(--primary-4) !important;
 }
 
 .mat-mdc-fab:not(.mdc-fab--extended) {
