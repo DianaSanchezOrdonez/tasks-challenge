@@ -38,7 +38,6 @@ export class DataService {
   getTasks(
     input?: FilterTaskInput
   ): Observable<ApolloQueryResult<{ tasks: Task[] }>> {
-    console.log('input from data service', input);
     return this.apolloClient.watchQuery<{ tasks: Task[] }>({
       query: GET_TASKS_BY_STATUS,
       variables: {

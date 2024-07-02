@@ -6,51 +6,41 @@ import {
   listTasks,
   listTasksFailure,
   listTasksSuccess,
+  resetLoading,
 } from './task.actions';
-import { TaskState } from './task.state';
+import { TaskState } from './task.typos';
+import { EntityAdapter, createEntityAdapter } from '@ngrx/entity';
+import { Task } from '../../features/dashboard/models/task.model';
 
-const initialState: TaskState = {
-  tasks: [],
+export const adapter: EntityAdapter<Task> = createEntityAdapter<Task>();
+
+export const initialState: TaskState = adapter.getInitialState({
   loading: false,
   error: null,
-};
+});
 
 export const taskReducer = createReducer(
   initialState,
-  on(addTaskSuccess, (state, { createTask }) => ({
-    ...state,
-    tasks: [...state.tasks, createTask],
-    loading: false,
-    error: null,
-  })),
-  on(deleteTaskSuccess, (state, { taskId }) => ({
-    ...state,
-    tasks: state.tasks.filter((task) => task.id !== taskId),
-    loading: false,
-    error: null,
-  })),
-  on(editTaskSuccess, (state, { updatedTask }) => ({
-    ...state,
-    tasks: state.tasks.map((task) =>
-      task.id === updatedTask.id ? updatedTask : task
-    ),
-    loading: false,
-    error: null,
-  })),
-  on(listTasks, (state) => ({
-    ...state,
-    loading: true,
-    error: null,
-  })),
-  on(listTasksSuccess, (state, { tasks }) => ({
-    ...state,
-    tasks,
-    loading: false,
-    error: null,
-  })),
+  on(addTaskSuccess, (state, { createTask }) =>
+    adapter.addOne(createTask, { ...state, loading: false })
+  ),
+  on(deleteTaskSuccess, (state, { taskId }) =>
+    adapter.removeOne(taskId, { ...state, loading: false })
+  ),
+  on(editTaskSuccess, (state, { updatedTask }) =>
+    adapter.updateOne(
+      { id: updatedTask.id, changes: updatedTask },
+      { ...state, loading: false }
+    )
+  ),
+  on(listTasks, (state) => ({ ...state, loading: true, error: null })),
+  on(listTasksSuccess, (state, { tasks }) =>
+    adapter.setAll(tasks, { ...state, loading: false })
+  ),
   on(listTasksFailure, (state, { error }) => ({
     ...state,
     loading: false,
     error: error,
-  }))
+  })),
+  on(resetLoading, (state) => ({ ...state, loading: false }))
 );

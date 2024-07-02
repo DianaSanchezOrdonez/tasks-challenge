@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { catchError, exhaustMap, map } from 'rxjs/operators';
+import { catchError, exhaustMap, filter, map } from 'rxjs/operators';
 import { DataService } from '../services/data.service';
 import {
   addTask,
@@ -16,7 +16,9 @@ import {
   listTasks,
   listTasksFailure,
   listTasksSuccess,
+  resetLoading,
 } from './task.actions';
+import { ROUTER_NAVIGATED } from '@ngrx/router-store';
 
 @Injectable()
 export class TaskEffects {
@@ -26,14 +28,11 @@ export class TaskEffects {
     this.actions$.pipe(
       ofType(listTasks),
       exhaustMap((action) => {
-        console.log('List Tasks action:', action);
         return this.dataService.getTasks(action.filter).pipe(
           map((response) => {
-            console.log('API response:', response);
             return listTasksSuccess({ tasks: response.data.tasks });
           }),
           catchError((error) => {
-            console.log('API error:', error);
             return of(listTasksFailure({ error }));
           })
         );
@@ -74,17 +73,19 @@ export class TaskEffects {
       ofType(deleteTask),
       exhaustMap((action) =>
         this.dataService.deleteTask(action.taskId).pipe(
-          map((response) => {
-            console.log('response', response);
-            console.log(
-              'response.data!.deleteTask.id',
-              response.data!.deleteTask.id
-            );
-            return deleteTaskSuccess({ taskId: response.data!.deleteTask.id });
-          }),
+          map((response) =>
+            deleteTaskSuccess({ taskId: response.data!.deleteTask.id })
+          ),
           catchError((error) => of(deleteTaskFailure({ error })))
         )
       )
+    )
+  );
+
+  resetLoading$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ROUTER_NAVIGATED),
+      map(() => resetLoading())
     )
   );
 }

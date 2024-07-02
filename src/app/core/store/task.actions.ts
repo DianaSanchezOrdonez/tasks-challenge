@@ -62,3 +62,7 @@ export const listTasksFailure = createAction(
   '[Task] List Tasks Failure',
   props<{ error: any }>()
 );
+
+export const resetLoading = createAction(
+  "[Task] Reset Task in Store"
+);
