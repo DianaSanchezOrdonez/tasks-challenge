@@ -1,1 +1,16 @@
-<p>tasks works!</p>
+<app-search (filter)="receivedFilter($event)"></app-search>
+<app-toolbar (viewSelection)="handleTasksView($event)"></app-toolbar>
+
+@if(viewSelection === 'grid-view') {
+  <app-grid-view
+    [backlogTasks$]="backlogTasks$"
+    [inProgressTasks$]="inProgressTasks$"
+    [doneTasks$]="doneTasks$"
+  />
+} @else { 
+  <app-list-view
+    [backlogTasks$]="backlogTasks$"
+    [inProgressTasks$]="inProgressTasks$"
+    [doneTasks$]="doneTasks$"
+  />
+}
