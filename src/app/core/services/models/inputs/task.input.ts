@@ -1,4 +1,4 @@
-import { TagsEnum, StatusEnum, PointEstimateEnum } from "../../../features/dashboard/models/task.enums";
+import { TagsEnum, StatusEnum, PointEstimateEnum } from "../task.enums";
 
 interface TaskInput {
   name: string;

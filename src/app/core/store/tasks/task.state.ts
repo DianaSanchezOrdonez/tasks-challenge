@@ -1,6 +1,6 @@
 import { EntityState } from '@ngrx/entity';
-import { Task } from '../../features/dashboard/models/task.model';
-import { FilterTaskInput } from '../services/models/filters.input';
+import { Task } from '../../services/models/task.model';
+import { FilterTaskInput } from '../../services/models/inputs/filters.input';
 
 type ValueOf<T> = T[keyof T];
 

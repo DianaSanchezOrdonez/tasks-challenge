@@ -6,11 +6,10 @@ import {
   listTasks,
   listTasksFailure,
   listTasksSuccess,
-  resetLoading,
 } from './task.actions';
-import { TaskState } from './task.typos';
+import { TaskState } from './task.state';
 import { EntityAdapter, createEntityAdapter } from '@ngrx/entity';
-import { Task } from '../../features/dashboard/models/task.model';
+import { Task } from '../../services/models/task.model';
 
 export const adapter: EntityAdapter<Task> = createEntityAdapter<Task>();
 
@@ -41,6 +40,5 @@ export const taskReducer = createReducer(
     ...state,
     loading: false,
     error: error,
-  })),
-  on(resetLoading, (state) => ({ ...state, loading: false }))
+  }))
 );

@@ -1,7 +1,7 @@
 import {
   StatusEnum,
   TagsEnum,
-} from '../../../features/dashboard/models/task.enums';
+} from '../task.enums';
 
 interface FilterTaskInput {
   assigneeId?: string;

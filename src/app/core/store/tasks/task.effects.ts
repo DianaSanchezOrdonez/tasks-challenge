@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { catchError, exhaustMap, filter, map } from 'rxjs/operators';
-import { DataService } from '../services/data.service';
+import { catchError, exhaustMap, map } from 'rxjs/operators';
+import { DataService } from '../../services/data.service';
 import {
   addTask,
   addTaskFailure,
@@ -16,9 +16,7 @@ import {
   listTasks,
   listTasksFailure,
   listTasksSuccess,
-  resetLoading,
 } from './task.actions';
-import { ROUTER_NAVIGATED } from '@ngrx/router-store';
 
 @Injectable()
 export class TaskEffects {
@@ -79,13 +77,6 @@ export class TaskEffects {
           catchError((error) => of(deleteTaskFailure({ error })))
         )
       )
-    )
-  );
-
-  resetLoading$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(ROUTER_NAVIGATED),
-      map(() => resetLoading())
     )
   );
 }

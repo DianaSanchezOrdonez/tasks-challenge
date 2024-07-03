@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
-import { Task } from '../../features/dashboard/models/task.model';
-import { FilterTaskInput } from '../services/models/filters.input';
-import { TaskInput, TaskUpdateInput } from '../services/models/task.input';
+import { Task } from '../../services/models/task.model';
+import { FilterTaskInput } from '../../services/models/inputs/filters.input';
+import { TaskInput, TaskUpdateInput } from '../../services/models/inputs/task.input';
 
 export const addTask = createAction(
   '[Task] Add Task',
@@ -61,8 +61,4 @@ export const listTasksSuccess = createAction(
 export const listTasksFailure = createAction(
   '[Task] List Tasks Failure',
   props<{ error: any }>()
-);
-
-export const resetLoading = createAction(
-  "[Task] Reset Task in Store"
 );

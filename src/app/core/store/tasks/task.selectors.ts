@@ -1,7 +1,15 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { FilterInput, TaskState } from './task.typos';
 import { adapter } from './task.reducer';
-import { Task } from '../../features/dashboard/models/task.model';
+import { Task } from '../../services/models/task.model';
+import { FilterTaskInput } from '../../services/models/inputs/filters.input';
+import { TaskState } from './task.state';
+
+type ValueOf<T> = T[keyof T];
+
+export interface FilterInput {
+  key: keyof FilterTaskInput;
+  value: ValueOf<FilterTaskInput>;
+}
 
 export const selectTaskState = createFeatureSelector<TaskState>('taskState');
 
