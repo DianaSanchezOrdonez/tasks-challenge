@@ -1,5 +1,9 @@
-<img
-  class="profile-avatar"
-  [src]="avatarUrl ? avatarUrl : 'https://xsgames.co/randomusers/avatar.php?g=pixel'"
-  alt="user-avatar"
-/>
+@if(avatarUrl) {
+  <img class="profile-avatar" [src]="avatarUrl" alt="user-avatar" />
+} @else {
+  <img
+    class="profile-avatar"
+    [src]="'https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png'"
+    alt="not-found-avatar"
+  />
+}

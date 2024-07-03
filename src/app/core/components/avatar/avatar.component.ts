@@ -5,8 +5,8 @@ import { Component, Input } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './avatar.component.html',
-  styleUrl: './avatar.component.css'
+  styleUrl: './avatar.component.css',
 })
 export class AvatarComponent {
-  @Input() avatarUrl?: string = 'https://xsgames.co/randomusers/avatar.php?g=pixel'
+  @Input() avatarUrl: string | null = null;
 }

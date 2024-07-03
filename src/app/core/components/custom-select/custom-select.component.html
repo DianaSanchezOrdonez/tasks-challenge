@@ -22,7 +22,7 @@
   <div class="custom-select-container">
     <div class="custom-select" (click)="toggleDropdown()">
       @if(selectedOption) {
-        <app-avatar [avatarUrl]="selectedOption.avatarUrl" />
+        <app-avatar [avatarUrl]="selectedOption.avatarUrl ?? null" />
         <span class="body-medium-bold">{{ selectedOption.label }}</span>
       } @else {
         <app-custom-icons [svgIcon]="icon"></app-custom-icons>
@@ -37,7 +37,7 @@
         *ngFor="let option of options"
         (click)="selectOption(option)"
       >
-        <app-avatar [avatarUrl]="option.avatarUrl" />
+        <app-avatar [avatarUrl]="option.avatarUrl ?? null" />
         <span class="body-medium-bold">{{ option.label }}</span>
       </div>
     </div>
