@@ -9,7 +9,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { AvatarComponent } from '../core/components/avatar/avatar.component';
 import { ConvertStringToNumberPipe } from '../core/pipes/convert-string-to-number';
 import { CustomIconsComponent } from '../core/components/custom-icons/custom-icons.component';
-import { Task } from '../features/dashboard/models/task.model';
+import { Task } from '../core/services/models/task.model';
 import { Observable } from 'rxjs';
 import { ChipsComponent } from '../core/components/chips/chips.component';
 
@@ -31,10 +31,11 @@ import { ChipsComponent } from '../core/components/chips/chips.component';
 export class ListViewComponent {
   panelOpenState = signal(false);
 
-  @Input() loading$!: Observable<boolean>;
   @Input() backlogTasks$!: Observable<Task[]>;
   @Input() inProgressTasks$!: Observable<Task[]>;
   @Input() doneTasks$!: Observable<Task[]>;
+
+  loading$!: Observable<boolean>;
 
   constructor() {}
 }
