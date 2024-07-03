@@ -1,6 +1,6 @@
 import { Component, Input, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { Task } from '../../../features/dashboard/models/task.model';
+import { Task } from '../../services/models/task.model';
 import { ChipsComponent } from '../chips/chips.component';
 import { AvatarComponent } from '../avatar/avatar.component';
 import { LowerCasePipe } from '@angular/common';
@@ -11,8 +11,8 @@ import { ConvertStringToNumberPipe } from '../../pipes/convert-string-to-number'
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
 import { Store } from '@ngrx/store';
-import { deleteTask } from '../../store/task.actions';
-import { TaskState } from '../../store/task.state';
+import { deleteTask } from '../../store/tasks/task.actions';
+import { TaskState } from '../../store/tasks/task.state';
 
 @Component({
   selector: 'app-card',

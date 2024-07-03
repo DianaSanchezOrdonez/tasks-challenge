@@ -17,13 +17,13 @@ import { CommonModule } from '@angular/common';
 import { CustomSelectComponent } from '../custom-select/custom-select.component';
 import { SelectOption } from '../custom-select/custom-select.model';
 import { DataService } from '../../services/data.service';
-import { User } from '../../../features/dashboard/models/user.model';
-import { StatusEnum } from '../../../features/dashboard/models/task.enums';
-import { Task } from '../../../features/dashboard/models/task.model';
+import { User } from '../../services/models/user.model';
+import { StatusEnum } from '../../services/models/task.enums';
+import { Task } from '../../services/models/task.model';
 import { ConvertStringToNumberPipe } from '../../pipes/convert-string-to-number';
 import { Store } from '@ngrx/store';
 import { TaskState } from 'zone.js/lib/zone-impl';
-import { addTask, editTask } from '../../store/task.actions';
+import { addTask, editTask } from '../../store/tasks/task.actions';
 
 type DropdownKeys = 'estimate' | 'assignee' | 'label' | 'dueDate';
 

@@ -3,7 +3,7 @@
   min-width: 128px;
   height: 32px;
   padding: 4px 16px;
-  color: #ffffff; 
+  color: var(--neutral-1); 
   box-sizing: border-box;
 
   .custom-select {
@@ -16,7 +16,7 @@
   .custom-options {
     background-color: #393D41;
     min-width: 128px;
-    color: #ffffff;
+    color: var(--neutral-1);
     position: fixed;
     z-index: 1;
     margin-left: -15px;

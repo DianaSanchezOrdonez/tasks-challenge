@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Task } from '../../features/dashboard/models/task.model';
+import { Task } from './models/task.model';
 import { Observable } from 'rxjs';
-import { User } from '../../features/dashboard/models/user.model';
+import { User } from './models/user.model';
 import { Apollo, MutationResult } from 'apollo-angular';
 import {
   CREATE_TASK,
@@ -12,8 +12,8 @@ import {
   UPDATE_TASK,
 } from './graphql.operations';
 import { ApolloQueryResult } from '@apollo/client';
-import { FilterTaskInput } from './models/filters.input';
-import { TaskInput, TaskUpdateInput } from './models/task.input';
+import { FilterTaskInput } from './models/inputs/filters.input';
+import { TaskInput, TaskUpdateInput } from './models/inputs/task.input';
 
 @Injectable({
   providedIn: 'root',

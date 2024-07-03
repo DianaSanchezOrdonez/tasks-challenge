@@ -1,4 +1,4 @@
-import { CommonModule, DatePipe, UpperCasePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { CustomIconsComponent } from '../custom-icons/custom-icons.component';
 
@@ -13,7 +13,7 @@ interface Item {
 @Component({
   selector: 'app-chips',
   standalone: true,
-  imports: [CommonModule, DatePipe, UpperCasePipe, CustomIconsComponent],
+  imports: [CommonModule, CustomIconsComponent],
   templateUrl: './chips.component.html',
   styleUrl: './chips.component.css',
 })
